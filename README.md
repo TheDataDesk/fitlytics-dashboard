@@ -59,7 +59,8 @@ cd fitlytics-dashboard
 
 
 python3.13 -m venv venv
-source venv/bin/activate     # If you are on Windows: venv\Scripts\activate
+
+source venv/bin/activate     # If you are on Windows:  venv\Scripts\activate
 
 --- 
 ### 3.  Install Dependencies
