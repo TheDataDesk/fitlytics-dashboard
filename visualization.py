@@ -266,10 +266,11 @@ def plot_revenue_by_order_type(revenue_by_type_df: pd.DataFrame):
 def plot_monthly_summary_table(monthly_summary_df: pd.DataFrame):
     fig = go.Figure(data=[go.Table(
         header=dict(values=list(monthly_summary_df.columns),
-                    fill_color='paleturquoise',
+                    fill_color='slategray',  
+                    font=dict(color='white'),
                     align='left'),
         cells=dict(values=[monthly_summary_df[col] for col in monthly_summary_df.columns],
-                   fill_color='lavender',
+                   fill_color='whitesmoke',
                    align='left'))
     ])
     fig.update_layout(title='Monthly Business Summary')
