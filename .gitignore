@@ -1,0 +1,14 @@
+# Ignore Python cache
+__pycache__/
+*.py[cod]
+# Ignore Streamlit logs
+.streamlit/config.toml
+*.log
+# Ignore virtual environments
+venv/
+env/
+# Ignore dev containers
+.devcontainer/
+# Ignore system files
+.DS_Store
+*.swp
