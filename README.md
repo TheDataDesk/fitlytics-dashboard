@@ -1,6 +1,6 @@
 # 🏋️‍♀️ Fitlytics Dashboard
 
-**Fitlytics** is an interactive dashboard built using Streamlit to help explore business insights for a fictional athletic e-commerce brand. Whether you're looking to understand customer retention patterns, revenue performance, or product category trends — this dashboard brings it all together in a visually intuitive and insightful way.
+**Fitlytics** is an interactive dashboard built using Streamlit to help explore business insights for a fictional athletic e-commerce brand. Whether you're looking to understand customer retention patterns, revenue performance, or product category trends, this dashboard brings it all together in a visually intuitive and insightful way.
 
 ---
 
