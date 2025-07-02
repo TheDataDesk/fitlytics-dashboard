@@ -28,17 +28,18 @@ Dive deep into real-world e-commerce questions:
 
 ## Project Structure
 
-fitlytics-dashboard/
-├── app.py # Main Streamlit dashboard
-├── analysis.py # Business logic and metric calculations
-├── transform.py # Data cleaning and preprocessing
-├── visualization.py # Plotly chart rendering functions
-├── loader.py # Optional: utilities for loading data
-├── requirements.txt # Project dependencies
-├── README.md # This file
-└── data/
-├── orders.parquet # Order-level transaction data
-└── products.parquet # Product-level metadata
+- `fitlytics-dashboard/`
+  - `app.py` – Entry point: Streamlit dashboard layout and logic
+  - `analysis.py` – Core business metrics and cohort logic
+  - `transform.py` – Data cleaning and preprocessing functions
+  - `visualization.py` – Plotly-based chart rendering
+  - `loader.py` – Utility functions to load parquet data
+  - `requirements.txt` – Python dependencies
+  - `README.md` – Project documentation
+  - `data/`
+    - `orders.parquet` – Order-level transactional data
+    - `products.parquet` – Product-level catalog and metadata
+
 
 ---
 
