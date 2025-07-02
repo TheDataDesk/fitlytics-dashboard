@@ -30,14 +30,23 @@ Dive deep into real-world e-commerce questions:
 
 fitlytics-dashboard/
 ├── app.py # Main Streamlit dashboard
+
 ├── analysis.py # Business logic and metric calculations
+
 ├── transform.py # Data cleaning and preprocessing
+
 ├── visualization.py # Plotly chart rendering functions
+
 ├── loader.py # Optional: utilities for loading data
+
 ├── requirements.txt # Project dependencies
+
 ├── README.md # This file
+
 └── data/
+
 ├── orders.parquet # Order-level transaction data
+
 └── products.parquet # Product-level metadata
 
 ---
