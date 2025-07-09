@@ -65,8 +65,6 @@ def enrich_orders_with_products(orders: pd.DataFrame, products: pd.DataFrame) ->
     orders['product_list'] = orders['product_items'].str.split(r',\s*')
     orders_exploded = orders.explode('product_list')
     orders_exploded.rename(columns={'product_list': 'product_title'}, inplace=True)
-    orders_exploded['product_title'] = orders_exploded['product_title'].str.strip()
-
     # Merge
     enriched = orders_exploded.merge(products, on='product_title', how='left')
 

@@ -6,22 +6,29 @@ import plotly.graph_objects as go
 
 def plot_retention_matrix(retention_matrix: pd.DataFrame) -> None:
     """
-    Visualize a retention matrix as a heatmap.
+    Visualize a retention matrix as a heatmap with upper triangle only,
+    values as float retention rates (e.g., 0.45), and dark color scale.
     """
     matrix = retention_matrix.copy()
     matrix.index = matrix.index.astype(str)
     matrix.columns = matrix.columns.astype(str)
-    matrix = matrix.loc[:, (matrix != 0).any(axis=0)]  
+    matrix = matrix.loc[:, (matrix != 0).any(axis=0)]
+
+    # Zero out lower triangle (below diagonal)
+    for i in range(matrix.shape[0]):
+        for j in range(matrix.shape[1]):
+            if j < i:
+                matrix.iloc[i, j] = np.nan  # Hide value from heatmap
 
     fig = px.imshow(
         matrix,
         labels=dict(x="Order Month", y="Cohort Month", color="Retention Rate"),
-        text_auto=".0%",
-        color_continuous_scale="Blues"
+        text_auto=".2f",
+        color_continuous_scale="Cividis"  # Use a darker color scheme
     )
     fig.update_layout(title="Customer Retention by Cohort", height=600)
 
-    st.plotly_chart(fig, use_container_width=True)  
+    st.plotly_chart(fig, use_container_width=True)
 
 def plot_retention_matrix(retention_matrix: pd.DataFrame) -> None:
     matrix = retention_matrix.copy()
@@ -342,3 +349,37 @@ def plot_retention_by_discount_level(df):
     )
     fig.update_layout(yaxis_tickformat=".1%", legend_title="Discount Level")
     return fig
+
+def plot_revenue_by_category_area_chart(df: pd.DataFrame) -> None:
+    """
+    Plots an area chart of revenue by product category over time.
+    """
+    # Ensure order_month is string or datetime for proper sorting
+    df = df.copy()
+    df["order_month"] = pd.to_datetime(df["order_month"])
+    df = df.sort_values("order_month")
+
+    # Group data by month and category
+    monthly_revenue = (
+        df.groupby([df["order_month"].dt.to_period("M").astype(str), "product_category"])
+        .agg(revenue=("revenue", "sum"))
+        .reset_index()
+    )
+
+    fig = px.area(
+        monthly_revenue,
+        x="order_month",
+        y="revenue",
+        color="product_category",
+        title="Monthly Revenue by Product Category",
+        labels={"order_month": "Order Month", "revenue": "Revenue", "product_category": "Category"},
+    )
+
+    fig.update_layout(
+        height=500,
+        xaxis_title="Order Month",
+        yaxis_title="Revenue",
+        legend_title="Product Category"
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
