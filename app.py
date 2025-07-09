@@ -152,7 +152,7 @@ st.header(" 👥 SECTION 1: Customer Behavior & Retention")
 
 # Graph 1: heatmap for customer Retention by Cohort
 st.subheader("Customer Retention Trends by Acquisition Cohort")
-st.plotly_chart(plot_retention_matrix(retention_matrix), use_container_width=True, key="retention_by_cohort")
+plot_retention_matrix(retention_matrix)
 st.markdown("""
 
 - **Y-axis:** Cohort Month (month of user acquisition)  
