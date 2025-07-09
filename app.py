@@ -26,6 +26,7 @@ from analysis import (
     perform_rfm_segmentation,
     get_rfm_segment_counts,
     get_retention_by_discount_level
+    
 )
 from visualization import(
     plot_retention_matrix, 
@@ -47,7 +48,8 @@ from visualization import(
     plot_monthly_summary_table,
     plot_month1_churn_rate,
     plot_rfm_segmentation_bar,
-    plot_retention_by_discount_level
+    plot_retention_by_discount_level,
+    plot_revenue_by_category_area_chart
 )
 
 
@@ -412,6 +414,11 @@ st.markdown("""
 - **Accessories** sold well despite low pricing — ideal for **upsells or frequent repurchases**
 """)
 st.markdown("---")
+
+#Graph 14: Monthly Revenue by Product Category
+
+st.subheader("Monthly Revenue by Product Category")
+plot_revenue_by_category_area_chart(filtered_product_df)
 
 
 # SECTION 4: Category & Country Revenue Trends
