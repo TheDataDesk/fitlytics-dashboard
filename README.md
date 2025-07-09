@@ -1,6 +1,6 @@
 # 🏋️‍♀️ Fitlytics Dashboard
 
-**Fitlytics** is an interactive dashboard built using Streamlit to help explore business insights for a fictional athletic e-commerce brand. Whether you're looking to understand customer retention patterns, revenue performance, or product category trends — this dashboard brings it all together in a visually intuitive and insightful way.
+**Fitlytics** is an interactive dashboard built using Streamlit to help explore business insights for a fictional athletic e-commerce brand. Whether you're looking to understand customer retention patterns, revenue performance, or product category trends, this dashboard brings it all together in a visually intuitive and insightful way.
 
 ---
 
@@ -57,22 +57,23 @@ cd fitlytics-dashboard
 
 ### 2. Set Up a Virtual Environment
 
+**Make sure your system has **Python 3.13.3 or later** installed.**
 
 python3.13 -m venv venv
-source venv/bin/activate     # If you are on Windows: venv\Scripts\activate
+
+source venv/bin/activate     # If you are on Windows:  venv\Scripts\activate
 
 --- 
 ### 3.  Install Dependencies
 
 pip install --upgrade pip
+
 pip install -r requirements.txt
+
 
 If requirements.txt is missing, install manually:
 
-pip install streamlit pandas plotly pyarrow
-
-**Make sure your system has **Python 3.13.3 or later** installed.**
-
+ - pip install streamlit pandas plotly pyarrow
 
 ---
 
