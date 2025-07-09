@@ -48,8 +48,7 @@ from visualization import(
     plot_monthly_summary_table,
     plot_month1_churn_rate,
     plot_rfm_segmentation_bar,
-    plot_retention_by_discount_level,
-    plot_revenue_by_category_area_chart
+    plot_retention_by_discount_level
 )
 
 
@@ -415,11 +414,6 @@ st.markdown("""
 """)
 st.markdown("---")
 
-#Graph 14: Monthly Revenue by Product Category
-
-st.subheader("Monthly Revenue by Product Category")
-plot_revenue_by_category_area_chart(filtered_product_df)
-
 
 # SECTION 4: Category & Country Revenue Trends
 st.header("🌍 SECTION 4: Category & Geographic Trends") 
@@ -427,7 +421,7 @@ st.header("🌍 SECTION 4: Category & Geographic Trends")
 # Graph 14: Revenue Trend by Product Category
 st.subheader("Revenue Trend by Product Category")
 category_trend = get_category_revenue_trend(filtered_product_df)
-st.plotly_chart(plot_category_revenue_trend(category_trend), use_container_width=True, key="cat_revenue_trend")
+st.area(plot_category_revenue_trend(category_trend), use_container_width=True, key="cat_revenue_trend")
 st.markdown("""
 
 ### Observations

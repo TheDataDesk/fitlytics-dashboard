@@ -30,22 +30,6 @@ def plot_retention_matrix(retention_matrix: pd.DataFrame) -> None:
 
     st.plotly_chart(fig, use_container_width=True)
 
-def plot_retention_matrix(retention_matrix: pd.DataFrame) -> None:
-    matrix = retention_matrix.copy()
-    matrix.index = matrix.index.astype(str)
-    matrix.columns = matrix.columns.astype(str)
-    matrix = matrix.loc[:, (matrix != 0).any(axis=0)]
-
-    fig = px.imshow(
-        matrix,
-        labels=dict(x="Order Month", y="Cohort Month", color="Retention Rate"),
-        text_auto=".0%",
-        color_continuous_scale="Blues"
-    )
-    fig.update_layout(title="Customer Retention by Cohort", height=600)
-    st.plotly_chart(fig, use_container_width=True)
-
-
 def plot_month1_retention(month_1_df: pd.DataFrame) -> None:
     fig = px.bar(
         month_1_df,
@@ -152,7 +136,7 @@ def plot_top_products_by_revenue(top_products_df: pd.DataFrame):
     return fig
 
 def plot_category_revenue_trend(category_trend_df: pd.DataFrame):
-    fig = px.line(
+    fig = px.area(
         category_trend_df,
         x="order_month",
         y="net_price",
@@ -349,37 +333,3 @@ def plot_retention_by_discount_level(df):
     )
     fig.update_layout(yaxis_tickformat=".1%", legend_title="Discount Level")
     return fig
-
-def plot_revenue_by_category_area_chart(df: pd.DataFrame) -> None:
-    """
-    Plots an area chart of revenue by product category over time.
-    """
-    # Ensure order_month is string or datetime for proper sorting
-    df = df.copy()
-    df["order_month"] = pd.to_datetime(df["order_month"])
-    df = df.sort_values("order_month")
-
-    # Group data by month and category
-    monthly_revenue = (
-        df.groupby([df["order_month"].dt.to_period("M").astype(str), "product_category"])
-        .agg(revenue=("revenue", "sum"))
-        .reset_index()
-    )
-
-    fig = px.area(
-        monthly_revenue,
-        x="order_month",
-        y="revenue",
-        color="product_category",
-        title="Monthly Revenue by Product Category",
-        labels={"order_month": "Order Month", "revenue": "Revenue", "product_category": "Category"},
-    )
-
-    fig.update_layout(
-        height=500,
-        xaxis_title="Order Month",
-        yaxis_title="Revenue",
-        legend_title="Product Category"
-    )
-
-    st.plotly_chart(fig, use_container_width=True)
